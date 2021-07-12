@@ -1,0 +1,75 @@
+package unit11;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class JoinServlet
+ */
+@WebServlet("/JoinServlet")
+public class JoinServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		String name =request.getParameter("name");
+		int user_num_front = Integer.parseInt(request.getParameter("user_num_front"));
+		int user_num_back = Integer.parseInt(request.getParameter("user_num_back"));
+		String id =request.getParameter("id");
+		String password =request.getParameter("password");
+		String password_check =request.getParameter("password_check");
+		String email_front =request.getParameter("email_front");
+		String email_back =request.getParameter("email_back");
+		String faxnum =request.getParameter("faxnum");
+		String addr_front =request.getParameter("addr_front");
+		String addr_back =request.getParameter("addr_back");
+		String phone =request.getParameter("phone");
+		String job = request.getParameter("job");
+		String mail = request.getParameter("mail");
+		String[] interests = request.getParameterValues("interest");
+		
+		
+		out.print("<html><head><title></title></head>");
+		out.print("<body>");
+		out.print("이름 : ");
+		out.print("<b>"+name+"</b>"+"<br>");
+		out.print("주민번호 : ");
+		out.print("<b>"+user_num_front+"-"+user_num_back+"</b>"+"<br>");
+		out.print("아이디 : ");
+		out.print("<b>"+id+"</b>"+"<br>");
+		out.print("비밀번호 : ");
+		out.print("<b>"+password+"</b>"+"<br>");
+		out.print("이메일 : ");
+		out.print("<b>"+email_front+"@"+email_back+"</b>"+"<br>");
+		out.print("우편번호 : ");
+		out.print("<b>"+faxnum+"</b>"+"<br>");
+		out.print("주소 : ");
+		out.print("<b>"+addr_front+""+addr_back+"</b>"+"<br>");
+		out.print("핸드폰번호 : ");
+		out.print("<b>"+phone+"</b>"+"<br>");
+		
+		out.print("직업 : ");
+		out.print("<b>"+job+"</b>"+"<br>");
+		out.print("수신동의여부 : ");
+		out.print("<b>"+mail+"</b>"+"<br>");
+		out.print("관심분야 : ");
+		for(int i= 0;i<interests.length;i++) {
+			out.println("<b>"+interests[i]+"</b>");
+		}
+
+		out.print("<a href = 'javascript:history.go(-1)'>다시</a>");
+		out.print("</body>");
+		out.print("</html>");
+		
+		out.close();
+	}
+
+}
